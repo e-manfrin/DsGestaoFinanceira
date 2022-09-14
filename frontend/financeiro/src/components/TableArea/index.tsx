@@ -20,6 +20,7 @@ export const TableArea = ({ list, onExcluir }: Props) => {
           <C.TableHeadColumn>Título</C.TableHeadColumn>
           <C.TableHeadColumn width={150}>Valor</C.TableHeadColumn>
           <C.TableHeadColumn width={150}>Excluir</C.TableHeadColumn>
+          <C.TableHeadColumn width={150}>Notificar</C.TableHeadColumn>
         </tr>
       </thead>
       <tbody>

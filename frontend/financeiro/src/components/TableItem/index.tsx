@@ -33,6 +33,10 @@ export const TableItem = ({ index, item, onExcluir }: Props) => {
         <button onClick={(e) => onExcluir(index)}>Excluir</button>
       </C.TableColumn>
 
+      <C.TableColumn>
+        <button>SMS</button>
+      </C.TableColumn>
+
     </C.TableLine>
   );
 };
