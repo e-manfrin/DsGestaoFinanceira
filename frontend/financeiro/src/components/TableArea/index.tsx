@@ -6,7 +6,7 @@ import { TableItem } from '../TableItem/index';
 
 type Props = {
     list: Item[]
-    onExcluir: (index: number) => void
+    onExcluir: (index: number, id: number) => void
 }
 
 export const TableArea = ({ list, onExcluir }: Props) => {

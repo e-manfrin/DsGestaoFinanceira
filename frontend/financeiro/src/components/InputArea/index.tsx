@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Item } from '../../types/Item';
 import { categories } from '../../data/categories';
 import { newDateAdjusted } from '../../helpers/dateFilter';
+import { items } from '../../data/items';
 
 type Props = {
     onAdd: (item: Item) => void;
@@ -10,6 +11,7 @@ type Props = {
 
 export const InputArea = ({ onAdd }: Props) => {
 
+  const [id, setId] = useState(0);
   const [dateField, setDateField] = useState('');
   const [categoryField, setCategoryField] = useState(0);
   const [titleField, setTitleField] = useState('');
@@ -52,6 +54,7 @@ export const InputArea = ({ onAdd }: Props) => {
       alert(errors.join('\n'));
     } else {
       onAdd({
+        id: id,
         data: newDateAdjusted(dateField),
         categoriaId: categoryField,
         descricao: titleField,
@@ -67,8 +70,6 @@ export const InputArea = ({ onAdd }: Props) => {
     setTitleField('');
     setValueField(0);
   };
-
-  
 
   return(
     <C.Container>

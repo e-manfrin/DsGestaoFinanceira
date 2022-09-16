@@ -9,6 +9,7 @@ import { InfoArea } from '../../components/InfoArea';
 import { InputArea } from '../../components/InputArea';
 import axios from 'axios';
 import http from '../../utils/request';
+import { type } from 'os';
 
 
 const Financial = () => {
@@ -32,6 +33,28 @@ const Financial = () => {
       setFilteredList(response.data);
     });
   };
+
+  //const postData = () => {
+  //const data = {
+  //data: Date,
+  //descricao: 'pizza',
+  //valor: 80,
+  //categoriaId: 1
+  //};
+  //axios.post('http://localhost:5001/api/contas', data)
+  //.then((response) =>
+  //setFilteredList(response.data));
+  //};
+
+  //console.log(postData);
+
+  //const deleteData = async () => {
+  //await http.delete('http://localhost:5001/api/contas/3').then((response) => {
+  //alert(deleteData);
+  //setFilteredList(response.data);
+  //});
+  //};
+
 
   useEffect(() => {
     getData();
@@ -79,14 +102,18 @@ const Financial = () => {
   };
 
   //Excluir
-  const handleExcluir = (index: number) => {
-    const newRemoved = [...list];
-    console.log(newRemoved.length);
+  const handleExcluir = (index: number, id: number) => {
+    const newRemoved = [...filteredList];
+    axios.delete(`http://localhost:5001/api/contas/${id}`).then(response => {
+      newRemoved.splice(index, 1);
+      setFilteredList(newRemoved);
+    });
+    //console.log(newRemoved.length);
     //posição do array e remover uma possição
-    const removed: Item[] = newRemoved.splice(index, 1);
-    console.log(newRemoved.length);
-    alert('Item removido com sucesso');
-    setList(newRemoved);
+    //const removed: Item[] = newRemoved.splice(index, 1);
+    //console.log(newRemoved.length);
+    //alert('Item removido com sucesso');
+    //setList(newRemoved);
   };
 
   return (

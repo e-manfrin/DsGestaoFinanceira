@@ -6,7 +6,7 @@ import { categories } from '../../data/categories';
 type Props = {
   index: number;
   item: Item;
-  onExcluir: (index: number) => void
+  onExcluir: (index: number, id: number) => void
 }
 export const TableItem = ({ index, item, onExcluir }: Props) => {
   return (
@@ -29,7 +29,7 @@ export const TableItem = ({ index, item, onExcluir }: Props) => {
       </C.TableColumn>
 
       <C.TableColumn>
-        <button onClick={(e) => onExcluir(index)}>Excluir</button>
+        <button onClick={(e) => onExcluir(index,item.id)}>Excluir</button>
       </C.TableColumn>
 
       <C.TableColumn>
