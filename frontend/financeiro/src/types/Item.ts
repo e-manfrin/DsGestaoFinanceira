@@ -4,5 +4,5 @@ export type Item = {
     date: Date;
     categoriaId: number;
     descricao: string;
-    value: number;
+    valor: number;
 }

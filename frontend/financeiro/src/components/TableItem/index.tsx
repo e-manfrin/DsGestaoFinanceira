@@ -25,7 +25,7 @@ export const TableItem = ({ index, item, onExcluir }: Props) => {
 
       <C.TableColumn>
         <C.Value color={categories[item.categoriaId].expense ? 'red' : 'green'}>
-          R$ {item.value}
+          R$ {item.valor}
         </C.Value>
       </C.TableColumn>
 

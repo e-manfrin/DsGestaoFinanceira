@@ -56,9 +56,9 @@ const Financial = () => {
     //Filtra por filteredList
     for (const i in filteredList) {
       if (categories[filteredList[i].categoriaId].expense) {
-        expenseCount += filteredList[i].value;
+        expenseCount += filteredList[i].valor;
       } else {
-        incomeCount += filteredList[i].value;
+        incomeCount += filteredList[i].valor;
       }
     }
 
