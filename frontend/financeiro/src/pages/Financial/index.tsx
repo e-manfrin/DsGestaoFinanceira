@@ -28,9 +28,19 @@ const Financial = () => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
 
+  //Get
   const getData = async () => {
     await http.get('/contas?mes=8&ano=2022').then((response) => {
       setFilteredList(response.data);
+    });
+  };
+
+  //Delete
+  const handleExcluir = (index: number, id: number) => {
+    const newRemoved = [...filteredList];
+    http.delete(`/contas/${id}`).then(response => {
+      newRemoved.splice(index, 1);
+      setFilteredList(newRemoved);
     });
   };
 
@@ -99,21 +109,6 @@ const Financial = () => {
     const newList = [...list];
     newList.push(item);
     setList(newList);
-  };
-
-  //Excluir
-  const handleExcluir = (index: number, id: number) => {
-    const newRemoved = [...filteredList];
-    axios.delete(`http://localhost:5001/api/contas/${id}`).then(response => {
-      newRemoved.splice(index, 1);
-      setFilteredList(newRemoved);
-    });
-    //console.log(newRemoved.length);
-    //posição do array e remover uma possição
-    //const removed: Item[] = newRemoved.splice(index, 1);
-    //console.log(newRemoved.length);
-    //alert('Item removido com sucesso');
-    //setList(newRemoved);
   };
 
   return (
