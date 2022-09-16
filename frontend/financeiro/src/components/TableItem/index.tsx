@@ -2,7 +2,6 @@ import * as C from './styles';
 import { Item } from '../../types/Item';
 import { formatDate } from '../../helpers/dateFilter';
 import { categories } from '../../data/categories';
-import { useState } from 'react';
 
 type Props = {
   index: number;
@@ -12,7 +11,7 @@ type Props = {
 export const TableItem = ({ index, item, onExcluir }: Props) => {
   return (
     <C.TableLine>
-      <C.TableColumn>{formatDate(new Date(item.date))}</C.TableColumn>
+      <C.TableColumn>{formatDate(new Date(item.data))}</C.TableColumn>
 
       <C.TableColumn>
         

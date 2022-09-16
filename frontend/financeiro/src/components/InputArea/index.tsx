@@ -52,7 +52,7 @@ export const InputArea = ({ onAdd }: Props) => {
       alert(errors.join('\n'));
     } else {
       onAdd({
-        date: newDateAdjusted(dateField),
+        data: newDateAdjusted(dateField),
         categoriaId: categoryField,
         descricao: titleField,
         valor: valueField

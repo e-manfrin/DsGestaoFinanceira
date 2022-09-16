@@ -24,8 +24,8 @@ export const filterListByMonth = (list: Item[], date: string): Item[] => {
   //fazer a filtragem preciso fazer um loop em minha lista geral e adicionar dentro da minha lista
   for(const i in list) {
     if(
-      list[i].date.getFullYear() === parseInt(year) && 
-            (list[i].date.getMonth() + 1) === parseInt(month)
+      list[i].data.getFullYear() === parseInt(year) && 
+            (list[i].data.getMonth() + 1) === parseInt(month)
     ) {
       newList.push(list[i]);
     }
