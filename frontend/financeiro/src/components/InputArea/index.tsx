@@ -21,20 +21,8 @@ export const InputArea = ({ onAdd }: Props) => {
   //são strings correspondentes para a propriedade enumerável encontrada diretamento sobre o objeto.
   const categoryKeys: string[] = Object.keys(categories);
 
-  //console.dir(categoryKeys);
-  // const handleAddEvent = () => {
-  //     let newItem: Item = {
-  //         date: new Date(2021, 9, 27),
-  //         category: 'food',
-  //         title: 'Item de teste',
-  //         value: 250.67
-  //     };
-  //     onAdd(newItem);
-  // }
-
   const handleAddEvent = () => {
     const errors: string[] = [];
-    
     //Função isNaN()
     //Função getTime() retorna o horário
     if(isNaN(new Date(dateField).getTime())) {

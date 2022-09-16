@@ -28,43 +28,56 @@ const Financial = () => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
 
-  //Get
+  //GET
   const getData = async () => {
     await http.get('/contas?mes=8&ano=2022').then((response) => {
       setFilteredList(response.data);
     });
   };
 
-  //Delete
+  //Excluir
   const handleExcluir = (index: number, id: number) => {
     const newRemoved = [...filteredList];
-    http.delete(`/contas/${id}`).then(response => {
+    axios.delete(`http://localhost:5001/api/contas/${id}`).then(response => {
       newRemoved.splice(index, 1);
       setFilteredList(newRemoved);
     });
   };
 
-  //const postData = () => {
-  //const data = {
-  //data: Date,
-  //descricao: 'pizza',
-  //valor: 80,
-  //categoriaId: 1
-  //};
-  //axios.post('http://localhost:5001/api/contas', data)
-  //.then((response) =>
-  //setFilteredList(response.data));
-  //};
-
-  //console.log(postData);
-
-  //const deleteData = async () => {
-  //await http.delete('http://localhost:5001/api/contas/3').then((response) => {
-  //alert(deleteData);
+  //Post
+  //const postData = async () => {
+  //await http.post('/contas').then((response) => {
   //setFilteredList(response.data);
   //});
   //};
 
+  const handleAddItem = (item: Item) => {
+    const newList = [...list];
+    axios.post('http://localhost:5001/api/contas', {
+      data: Date,
+      categoriaId: 1,
+      descricao: 'caneta',
+      valor: 400
+    })
+      .then(response => {
+        newList.push(item);
+        setList(response.data);
+        //setList(newList);
+      });
+  };
+
+  //const handleAddItem = (item: Item) => {
+  //const newList = [...list];
+  //newList.push(item);
+  //setList(newList);
+  //const postData = async () => {
+  //await http.post('/contas').then((response) => {
+  //setFilteredList(response.data);
+  //});
+  //};
+  //};
+
+  //console.log(postData);
 
   useEffect(() => {
     getData();
@@ -103,12 +116,6 @@ const Financial = () => {
   //Dentro do parâmetro insiro meu novo mês e modifica o mes com o setCurrentMonth
   const handleMonthChange = (newMonth: string) => {
     setCurrentMonth(newMonth);
-  };
-
-  const handleAddItem = (item: Item) => {
-    const newList = [...list];
-    newList.push(item);
-    setList(newList);
   };
 
   return (
