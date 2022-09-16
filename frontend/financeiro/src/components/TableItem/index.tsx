@@ -5,27 +5,27 @@ import { categories } from '../../data/categories';
 import { useState } from 'react';
 
 type Props = {
-    index: number;
-    item:  Item;
-    onExcluir: (index: number) => void
+  index: number;
+  item: Item;
+  onExcluir: (index: number) => void
 }
 export const TableItem = ({ index, item, onExcluir }: Props) => {
-
-  return(
+  return (
     <C.TableLine>
-      <C.TableColumn>{formatDate(item.date)}</C.TableColumn>
+      <C.TableColumn>{formatDate(new Date(item.date))}</C.TableColumn>
 
       <C.TableColumn>
-        <C.Category color={categories[item.category].color}>
-          {categories[item.category].title}
-        </C.Category>    
+        
+        <C.Category color={categories[item.categoriaId - 1].color}>
+          {categories[item.categoriaId].title}
+        </C.Category>
       </C.TableColumn>
 
-      <C.TableColumn>{item.title}</C.TableColumn>
+      <C.TableColumn>{item.descricao}</C.TableColumn>
 
       <C.TableColumn>
-        <C.Value color={categories[item.category].expense ? 'red' : 'green'}>
-                    R$ {item.value}
+        <C.Value color={categories[item.categoriaId].expense ? 'red' : 'green'}>
+          R$ {item.value}
         </C.Value>
       </C.TableColumn>
 

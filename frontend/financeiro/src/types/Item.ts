@@ -2,7 +2,7 @@
 
 export type Item = {
     date: Date;
-    category: string;
-    title: string;
+    categoriaId: number;
+    descricao: string;
     value: number;
 }

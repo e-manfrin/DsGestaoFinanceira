@@ -11,7 +11,7 @@ type Props = {
 export const InputArea = ({ onAdd }: Props) => {
 
   const [dateField, setDateField] = useState('');
-  const [categoryField, setCategoryField] = useState('');
+  const [categoryField, setCategoryField] = useState(0);
   const [titleField, setTitleField] = useState('');
   const [valueField, setValueField] = useState(0);
 
@@ -38,7 +38,7 @@ export const InputArea = ({ onAdd }: Props) => {
     if(isNaN(new Date(dateField).getTime())) {
       errors.push('Data inválida!');
     }
-    if(!categoryKeys.includes(categoryField)) {
+    if(!categoryKeys.includes(String(categoryField))) {
       errors.push('Categoria inválida!');
     }
     if(titleField === '') {
@@ -53,8 +53,8 @@ export const InputArea = ({ onAdd }: Props) => {
     } else {
       onAdd({
         date: newDateAdjusted(dateField),
-        category: categoryField,
-        title: titleField,
+        categoriaId: categoryField,
+        descricao: titleField,
         value: valueField
       });
       clearFields();
@@ -63,10 +63,12 @@ export const InputArea = ({ onAdd }: Props) => {
   //Função limpa após as mudanças
   const clearFields = () => {
     setDateField('');
-    setCategoryField('');
+    setCategoryField(0);
     setTitleField('');
     setValueField(0);
   };
+
+  
 
   return(
     <C.Container>
@@ -77,11 +79,11 @@ export const InputArea = ({ onAdd }: Props) => {
 
       <C.InputLabel>
         <C.InputTitle>Categoria</C.InputTitle>
-        <C.Select value={categoryField} onChange={e => setCategoryField(e.target.value)}>
+        <C.Select value={categoryField} onChange={e => setCategoryField(Number(e.target.value))}>
           <>
             <option></option>
             {categoryKeys.map((key, index) => (
-              <option key={index} value={key}>{categories[key].title}</option>
+              <option key={index} value={key}>{categories[Number(key)].title}</option>
             ))}
           </>
         </C.Select>
