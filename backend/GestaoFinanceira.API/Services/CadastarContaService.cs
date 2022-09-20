@@ -29,7 +29,7 @@ namespace GestaoFinanceira.API.Services
                 _repo.SaveChanges();
                 return readContaDto;
             }
-            catch(DbUpdateException erro)
+            catch (DbUpdateException erro)
             {
                 erro.GetBaseException();
                 return null;

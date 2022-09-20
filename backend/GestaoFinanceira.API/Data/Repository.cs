@@ -21,7 +21,7 @@ namespace GestaoFinanceira.API.Data
         }
         public bool SaveChanges()
         {
-            return(_contaContext.SaveChanges() > 0);
+            return (_contaContext.SaveChanges() > 0);
         }
         public void Update<T>(T entity) where T : class
         {

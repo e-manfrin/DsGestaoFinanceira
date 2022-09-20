@@ -44,40 +44,31 @@ const Financial = () => {
     });
   };
 
-  //Post
-  //const postData = async () => {
-  //await http.post('/contas').then((response) => {
-  //setFilteredList(response.data);
-  //});
-  //};
-
   const handleAddItem = (item: Item) => {
-    const newList = [...list];
-    axios.post('http://localhost:5001/api/contas', {
-      data: Date,
-      categoriaId: 1,
-      descricao: 'caneta',
-      valor: 400
-    })
-      .then(response => {
-        newList.push(item);
-        setList(response.data);
-        //setList(newList);
-      });
+    // console.log(item);
+    const newList = [...filteredList];
+    
+    axios({
+      method: 'post',
+      url: 'http://localhost:5001/api/contas',
+      data: {
+        data: String(item.data).replace(' (Hora padrão de Brasília)', ''),
+        categoriaId: Number(localStorage.getItem('categoriaId')),
+        descricao: String(item.descricao),
+        valor: Number(item.valor)
+      },
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(function (response) {
+      console.log(response.data);
+    }).catch((error)=>{
+      console.log(error.data);
+      console.log(error.status);
+      console.log(error.headers);
+    });
   };
-
-  //const handleAddItem = (item: Item) => {
-  //const newList = [...list];
-  //newList.push(item);
-  //setList(newList);
-  //const postData = async () => {
-  //await http.post('/contas').then((response) => {
-  //setFilteredList(response.data);
-  //});
-  //};
-  //};
-
-  //console.log(postData);
 
   useEffect(() => {
     getData();

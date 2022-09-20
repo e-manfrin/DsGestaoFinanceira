@@ -22,6 +22,7 @@ namespace GestaoFinanceira.API
                 opts => opts.UseSqlite(Configuration.GetConnectionString("Default"))
                 );
 
+
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IServico, Servico>();
             services.AddScoped<ListarContaService, ListarContaService>();

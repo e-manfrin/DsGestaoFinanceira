@@ -32,7 +32,7 @@ namespace GestaoFinanceira.API.Controllers
         public IActionResult CadastarConta([FromBody] CreateContaDto createContaDto)
         {
             var result = _cadastarContaService.AdicionarConta(createContaDto);
-            if(result == null)
+            if (result == null)
             {
                 return BadRequest();
             }
@@ -43,7 +43,7 @@ namespace GestaoFinanceira.API.Controllers
         public IActionResult DeletarConta(int id)
         {
             bool verificar = _excluirContaService.ExcluirConta(id);
-            if(verificar == true)
+            if (verificar == true)
             {
                 return Ok();
             }

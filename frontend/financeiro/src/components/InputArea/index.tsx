@@ -1,5 +1,5 @@
 import * as C from './styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Item } from '../../types/Item';
 import { categories } from '../../data/categories';
 import { newDateAdjusted } from '../../helpers/dateFilter';
@@ -51,6 +51,7 @@ export const InputArea = ({ onAdd }: Props) => {
       clearFields();
     }
   };
+  
   //Função limpa após as mudanças
   const clearFields = () => {
     setDateField('');
@@ -58,6 +59,10 @@ export const InputArea = ({ onAdd }: Props) => {
     setTitleField('');
     setValueField(0);
   };
+
+  useEffect(() => {
+    localStorage.setItem('categoriaId',String(categoryField));
+  },[]);
 
   return(
     <C.Container>
@@ -68,9 +73,12 @@ export const InputArea = ({ onAdd }: Props) => {
 
       <C.InputLabel>
         <C.InputTitle>Categoria</C.InputTitle>
-        <C.Select value={categoryField} onChange={e => setCategoryField(Number(e.target.value))}>
+        <C.Select value={categoryField} onChange={(e) => { 
+          setCategoryField(Number(e.target.value));
+          localStorage.setItem('categoriaId',String(e.target.value));
+        } }>
           <>
-            <option></option>
+            
             {categoryKeys.map((key, index) => (
               <option key={index} value={key}>{categories[Number(key)].title}</option>
             ))}
