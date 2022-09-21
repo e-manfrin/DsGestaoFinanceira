@@ -23,10 +23,18 @@ namespace GestaoFinanceira.API.Services
         {
             try
             {
-                Conta conta = _mapper.Map<Conta>(createContaDto);
+                Conta conta = new Conta();
+                conta.Descricao = createContaDto.Descricao;
+                conta.CategoriaID = createContaDto.CategoriaId;
+                int day = Int32.Parse(createContaDto.Data.Substring(0,2));
+                int month = Int32.Parse(createContaDto.Data.Substring(3, 2));
+                int year = Int32.Parse(createContaDto.Data.Substring(6, 4));
+                DateOnly date = new DateOnly(year, month, day);
+                conta.Data = date;
+                conta.Valor = createContaDto.Valor;
                 _repo.Add(conta);
-                ReadContaDto readContaDto = _mapper.Map<ReadContaDto>(conta);
                 _repo.SaveChanges();
+                ReadContaDto readContaDto = _mapper.Map<ReadContaDto>(conta);                
                 return readContaDto;
             }
             catch (DbUpdateException erro)

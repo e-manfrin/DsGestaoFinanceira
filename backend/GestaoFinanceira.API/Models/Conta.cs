@@ -5,7 +5,7 @@ namespace GestaoFinanceira.API.Models
     public class Conta
     {
         public Conta() { }
-        public Conta(int id, DateTime data, string descricao, double valor, int categoriaID)
+        public Conta(int id, DateOnly data, string descricao, double valor, int categoriaID)
         {
             this.Id = id;
             this.Data = data;
@@ -18,7 +18,7 @@ namespace GestaoFinanceira.API.Models
         [Required]
         public int Id { get; set; }
         [Required(ErrorMessage = "O Campo Data é obrigatório")]
-        public DateTime Data { get; set; }
+        public DateOnly Data { get; set; }
 
         [Required(ErrorMessage = "O Campo Descricao é obrigatório")]
         [StringLength(50, ErrorMessage = "O limite do campo Descricao é de 50 caracteries")]

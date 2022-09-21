@@ -22,9 +22,9 @@ namespace GestaoFinanceira.API.Data
             builder.Entity<Conta>()
                 .HasData(new List<Conta>()
                 {
-                    new Conta(10,new DateTime(2022, 7, 5), "Conta de luz", 190.9, 3),
-                    new Conta(11,new DateTime(2022, 8, 5), "Conta de Água",90.6,4),
-                    new Conta(12,new DateTime(2022, 8, 5), "Conta de Gás", 100.1,4),
+                    new Conta(10,new DateOnly(2022, 7, 5), "Conta de luz", 190.9, 3),
+                    new Conta(11,new DateOnly(2022, 8, 5), "Conta de Água",90.6,4),
+                    new Conta(12,new DateOnly(2022, 8, 5), "Conta de Gás", 100.1,4),
                 });
         }
     }
