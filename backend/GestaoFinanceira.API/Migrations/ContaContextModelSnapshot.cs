@@ -25,6 +25,7 @@ namespace GestaoFinanceira.API.Migrations
 
                     b.Property<string>("NomeCatergoria")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -53,12 +54,12 @@ namespace GestaoFinanceira.API.Migrations
                     b.Property<int>("CategoriaID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Data")
+                    b.Property<DateOnly>("Data")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Valor")
@@ -75,7 +76,7 @@ namespace GestaoFinanceira.API.Migrations
                         {
                             Id = 10,
                             CategoriaID = 3,
-                            Data = new DateTime(2022, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Data = new DateOnly(2022, 7, 5),
                             Descricao = "Conta de luz",
                             Valor = 190.90000000000001
                         },
@@ -83,7 +84,7 @@ namespace GestaoFinanceira.API.Migrations
                         {
                             Id = 11,
                             CategoriaID = 4,
-                            Data = new DateTime(2022, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Data = new DateOnly(2022, 8, 5),
                             Descricao = "Conta de Água",
                             Valor = 90.599999999999994
                         },
@@ -91,7 +92,7 @@ namespace GestaoFinanceira.API.Migrations
                         {
                             Id = 12,
                             CategoriaID = 4,
-                            Data = new DateTime(2022, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Data = new DateOnly(2022, 8, 5),
                             Descricao = "Conta de Gás",
                             Valor = 100.09999999999999
                         });

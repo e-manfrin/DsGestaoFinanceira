@@ -8,7 +8,7 @@ namespace GestaoFinanceira.API.Dtos
         [Key]
         [Required]
         public int Id { get; set; }
-        public string Data { get; set; }
+        public DateOnly Data { get; set; }
 
         [Required(ErrorMessage = "O Campo Descricao é obrigatório")]
         [StringLength(100, ErrorMessage = "O limite do campo Descricao é de 100 caracteries")]

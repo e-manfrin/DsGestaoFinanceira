@@ -15,7 +15,7 @@ namespace GestaoFinanceira.API.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NomeCatergoria = table.Column<string>(type: "TEXT", nullable: false)
+                    NomeCatergoria = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,8 @@ namespace GestaoFinanceira.API.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Data = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Data = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Valor = table.Column<double>(type: "REAL", nullable: false),
                     CategoriaID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -57,17 +57,17 @@ namespace GestaoFinanceira.API.Migrations
             migrationBuilder.InsertData(
                 table: "Contas",
                 columns: new[] { "Id", "CategoriaID", "Data", "Descricao", "Valor" },
-                values: new object[] { 10, 3, new DateTime(2022, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Conta de luz", 190.90000000000001 });
+                values: new object[] { 10, 3, new DateOnly(2022, 7, 5), "Conta de luz", 190.90000000000001 });
 
             migrationBuilder.InsertData(
                 table: "Contas",
                 columns: new[] { "Id", "CategoriaID", "Data", "Descricao", "Valor" },
-                values: new object[] { 11, 4, new DateTime(2022, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Conta de Água", 90.599999999999994 });
+                values: new object[] { 11, 4, new DateOnly(2022, 8, 5), "Conta de Água", 90.599999999999994 });
 
             migrationBuilder.InsertData(
                 table: "Contas",
                 columns: new[] { "Id", "CategoriaID", "Data", "Descricao", "Valor" },
-                values: new object[] { 12, 4, new DateTime(2022, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Conta de Gás", 100.09999999999999 });
+                values: new object[] { 12, 4, new DateOnly(2022, 8, 5), "Conta de Gás", 100.09999999999999 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contas_CategoriaID",

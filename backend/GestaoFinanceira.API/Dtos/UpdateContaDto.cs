@@ -6,7 +6,7 @@ namespace GestaoFinanceira.API.Dtos
     public class UpdateContaDto
     {
         [Required(ErrorMessage = "O Campo Data é obrigatório")]
-        public string Data { get; set; }
+        public DateOnly Data { get; set; }
 
         [Required(ErrorMessage = "O Campo Descricao é obrigatório")]
         [StringLength(100, ErrorMessage = "O limite do campo Descricao é de 20 caracteries")]

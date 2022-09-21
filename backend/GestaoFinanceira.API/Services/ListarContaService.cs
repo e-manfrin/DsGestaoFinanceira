@@ -24,11 +24,16 @@ namespace GestaoFinanceira.API.Services
         
         public List<ReadContaDto> listarContas(int mes, int ano)
         {
+
             List<Conta> resultConta = _repo.GetAllContas(mes, ano);
             List<ReadContaDto> novaListaDto = new List<ReadContaDto>();
             foreach (var result in resultConta)
             {
-                ReadContaDto readContaDto = _mapper.Map<ReadContaDto>(result);
+                ReadContaDto readContaDto = new ReadContaDto();
+                readContaDto.Descricao = result.Descricao;
+                readContaDto.Valor = result.Valor;
+                readContaDto.CategoriaId = result.CategoriaID;
+                readContaDto.Data = result.Data;
                 novaListaDto.Add(readContaDto);
             }
             return novaListaDto;
