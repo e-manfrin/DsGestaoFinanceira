@@ -28,6 +28,6 @@ npm add react-toastify@9.0.5
 
 # Subir o servidor:
 
-Garantir que está dentro da pasta cd financeiro/
+cd financeiro/ (garantir que está dentro da pasta)
 
 npm start
