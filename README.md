@@ -45,7 +45,7 @@ O objetivo é se logar ao sistema. Ao se logar será direcionado para a tela do 
 A categoria será pré definida com as opções alimentação, aluguel, salário, saúde, educação, automóvel, extras e outros. Na regra de negócio foi definido se a
 categoria escolhida é uma receita ou despesa após cadastrar as contas com suas devidas categorias será informado o balanço.
 É possível cadastrar, listar, editar e remover a conta.
-A tecnologias utilizadas para desenvolver incluem: C# (backend), CSS/HTML (frontend), Bootstrap, React, Typscript.
+A tecnologias utilizadas para desenvolver incluem: C# (backend), CSS/HTML, Bootstrap, React, Typscript (frontend).
 
 
 
